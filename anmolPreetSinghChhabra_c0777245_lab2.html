@@ -14,10 +14,41 @@
 		//Your code goes here
 		let numberOfRows = document.getElementById("t1");
 		let numberOfCols = document.getElementById("t2");
+		let generateTableBtn = document.getElementById("b1");
+		let addColumnBtn = document.getElementById("b2");
+		let addRowBtn = document.getElementById("b3");
+		let fontTag = document.getElementsByTagName("font");
+		let inputTag = document.getElementsByTagName("input")
+		let bodyTag = document.body;
+		let tableTag = document.createElement('table');
+		let tblBody = document.createElement('tbody');
 
 		function generateTable(){
-			console.log(numberOfRows.value);
-			console.log(numberOfCols.value);
+
+			if(numberOfCols.value == 0 || numberOfRows.value == 0){
+					alert("Please insert valid number of rows")
+			}else{
+  				tableTag.border = '1';
+
+  				tableTag.appendChild(tblBody);
+
+  				for (var i = 0; i < numberOfRows.value; i++) {
+    			let tableRow = document.createElement('tr');
+    			tblBody.appendChild(tableRow);
+
+    			for (var j = 0; j < numberOfCols.value; j++) {
+      			let tableData = document.createElement('td');
+      			tableData.width = '500px';
+      			tableData.appendChild(document.createTextNode("row[" + i + "], "+ " col[" + j + "]"));
+      			tableRow.appendChild(tableData);
+   					 }
+  				}
+ 			 	bodyTag.appendChild(tableTag);
+				  fontTag[0].style.display = "none";
+				  inputTag[0].style.display = "none";
+				  inputTag[1].style.display = "none";
+				  generateTableBtn.style.display = "none";
+			}
 		};
 		
 		function addColumn(){
