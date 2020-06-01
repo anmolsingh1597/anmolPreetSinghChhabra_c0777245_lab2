@@ -18,7 +18,7 @@
 		let addColumnBtn = document.getElementById("b2");
 		let addRowBtn = document.getElementById("b3");
 		let fontTag = document.getElementsByTagName("font");
-		let inputTag = document.getElementsByTagName("input")
+		let inputTag = document.getElementsByTagName("input");
 		let bodyTag = document.body;
 		let tableTag = document.createElement('table');
 		let tblBody = document.createElement('tbody');
@@ -51,12 +51,30 @@
 			}
 		};
 		
+
 		function addColumn(){
+			let col = parseInt(numberOfCols.value);
+			console.log(numberOfRows.value)
+			tableTag.insertCell(col)
 
 		};
 
+		
 		function addRow(){
+				tableTag.border = '1';
+  				tableTag.appendChild(tblBody);
+				  let row = parseInt(numberOfRows.value)
 
+    			let tableRow = document.createElement('tr');
+    			tblBody.appendChild(tableRow);
+
+    			for (var j = 0; j < numberOfCols.value; j++) {
+      			let tableData = document.createElement('td');
+      			tableData.width = '500px';
+      			tableData.appendChild(document.createTextNode("row[" + row + "], "+ " col[" + j + "]"));
+      			tableRow.appendChild(tableData);
+   					 }	
+						row = row+1
 		};
 
 	</script>
