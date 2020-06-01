@@ -22,12 +22,15 @@
 		let bodyTag = document.body;
 		let tableTag = document.createElement('table');
 		let tblBody = document.createElement('tbody');
+		let rowValue
 
 		function generateTable(){
 
 			if(numberOfCols.value == 0 || numberOfRows.value == 0){
 					alert("Please insert valid number of rows")
 			}else{
+				rowValue = parseInt(numberOfRows.value)
+
   				tableTag.border = '1';
 
   				tableTag.appendChild(tblBody);
@@ -48,15 +51,30 @@
 				  inputTag[0].style.display = "none";
 				  inputTag[1].style.display = "none";
 				  generateTableBtn.style.display = "none";
+				  
 			}
 		};
 		
 
 		function addColumn(){
-			let col = parseInt(numberOfCols.value);
-			console.log(numberOfRows.value)
-			tableTag.insertCell(col)
+				tableTag.border = '1';
+  				tableTag.appendChild(tblBody);
+				  let col = parseInt(numberOfCols.value)
 
+  				for (var i = 0; i < numberOfRows.value; i++) {
+    			let tableRow = document.createElement('tr');
+    			tblBody.appendChild(tableRow);
+					tableRow.insertCell(0).innerHTML("Cell")
+      			// let tableData = document.createElement('td');
+      			// tableData.width = '500px';
+      			// tableData.appendChild(document.createTextNode("row[" + i + "], "+ " col[" + col + "]"));
+      			// tableRow.appendChild(tableData);
+   					 }
+ 			 	bodyTag.appendChild(tableTag);
+	// 			  for (i = 0; i < tableTag.rows.length; i++) {
+    //     createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), i, 'col');
+    // }
+			
 		};
 
 		
@@ -64,6 +82,7 @@
 				tableTag.border = '1';
   				tableTag.appendChild(tblBody);
 				  let row = parseInt(numberOfRows.value)
+				// let row = rowValue
 
     			let tableRow = document.createElement('tr');
     			tblBody.appendChild(tableRow);
@@ -74,7 +93,7 @@
       			tableData.appendChild(document.createTextNode("row[" + row + "], "+ " col[" + j + "]"));
       			tableRow.appendChild(tableData);
    					 }	
-						row = row+1
+						// row = row+1
 		};
 
 	</script>
