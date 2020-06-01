@@ -23,6 +23,8 @@
 		let tableTag = document.createElement('table');
 		let tblBody = document.createElement('tbody');
 		let rowValue
+		let colsValue
+		// let brTag = document.getElementsByTagName("br")
 
 		function generateTable(){
 
@@ -30,7 +32,7 @@
 					alert("Please insert valid number of rows")
 			}else{
 				rowValue = parseInt(numberOfRows.value)
-
+				colsValue = parseInt(numberOfCols.value)
   				tableTag.border = '1';
 
   				tableTag.appendChild(tblBody);
@@ -47,11 +49,11 @@
    					 }
   				}
  			 	bodyTag.appendChild(tableTag);
+				//   brTag[0].removeChild
 				  fontTag[0].style.display = "none";
 				  inputTag[0].style.display = "none";
 				  inputTag[1].style.display = "none";
-				  generateTableBtn.style.display = "none";
-				  
+				  generateTableBtn.style.display = "none";				  
 			}
 		};
 		
@@ -63,32 +65,42 @@
 		var newCell = tblBodyObj.rows[i].insertCell(-1);
 		newCell.innerHTML = "row[" + i + "], "+ " col[" + (tblBodyObj.rows[i].cells.length - 1) + "]"
 	}
-
+			colsValue = colsValue + 1
 		};
 
 		
 		function addRow(){
-				tableTag.border = '1';
-  				tableTag.appendChild(tblBody);
-				  let row = parseInt(numberOfRows.value)
-				// let row = rowValue
+	// 			tableTag.border = '1';
+  	// 			tableTag.appendChild(tblBody);
+	// 			  let row = parseInt(numberOfRows.value)
+	// 			// let row = rowValue
 
-    			let tableRow = document.createElement('tr');
-    			tblBody.appendChild(tableRow);
+    // 			let tableRow = document.createElement('tr');
+    // 			tblBody.appendChild(tableRow);
 
-    			for (var j = 0; j < numberOfCols.value; j++) {
-      			let tableData = document.createElement('td');
-      			// tableData.width = '500px';
-      			tableData.appendChild(document.createTextNode("row[" + row + "], "+ " col[" + j + "]"));
-      			tableRow.appendChild(tableData);
-   					 }	
-						// row = row+1	
+    // 			for (var j = 0; j < numberOfCols.value; j++) {
+    //   			let tableData = document.createElement('td');
+    //   			// tableData.width = '500px';
+    //   			tableData.appendChild(document.createTextNode("row[" + row + "], "+ " col[" + j + "]"));
+    //   			tableRow.appendChild(tableData);
+   	// 				 }	
+	// 					// row = row+1	
 
-	// 			var tblBodyObj = tableTag.tBodies[0];
-	// 			for(var i=0; i<tblBodyObj.rows.cells.length; i++){
-	// 			var newRow = tblBodyObj.insertRow(i); // insert in the fifth row	
-	// 			newRow.innerHTML = "row[" + i + "], "+ " col[" + (tblBodyObj.rows[i].cells.length - 1) + "]"
-	// }	
+	// // 			var tblBodyObj = tableTag.tBodies[0];
+	// // 			for(var i=0; i<tblBodyObj.rows.cells.length; i++){
+	// // 			var newRow = tblBodyObj.insertRow(i); // insert in the fifth row	
+	// // 			newRow.innerHTML = "row[" + i + "], "+ " col[" + (tblBodyObj.rows[i].cells.length - 1) + "]"
+	// // }	
+
+let newRow = tableTag.insertRow(-1);
+
+for(var i=0; i<colsValue; i++){
+let newCell = newRow.insertCell(0);
+
+let newText = document.createTextNode("cell");
+newCell.appendChild(newText);
+}
+
 		};
 
 	</script>
